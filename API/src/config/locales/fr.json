@@ -1,0 +1,64 @@
+{
+    "locale": "fr",
+    "fields": {
+        "wrongType": "Type incorrect",
+        "invalid": "invalide",
+        "token": "Token",
+        "email": "Email",
+        "account": "Compte",
+        "link": "Lien",
+        "gcu": "CGU",
+        "passEmail": "email et mot de passe"
+    },
+    "success": {
+        "200" : {
+            "success": "{{ field }} avec succès",
+            "updated": "{{ field }} mis à jour avec succès",
+            "deleted": "{{ field }} supprimé avec succès",
+            "activated": "{{ field }} activé avec succès",
+            "sentIfExist": "{{ field }} envoyé si existant"
+        },
+        "201" : {
+            "created": "{{ field }} créé avec succès"
+        }
+    },
+    "error": {
+        "400": {
+            "parser": {
+                "unknownSource": "Source inconnue : {{ source }}",
+                "missingField": "Valeur requise manquante : {{ key }} dans {{ source }}",
+                "invalidField": "Type invalide : {{ key }} dans {{ source }}",
+                "invalidFieldInArray": "Type invalide : champ {{key}} dans {{source}} doit contenir uniquement des {{typeStr}}",
+                "invalidValue": "Valeur invalide : {{ value }} pour la regle '{{ rule }}' dans le champ '{{ key }}' dans '{{ source }}'",
+                "unknownField": "Champ inconnu : {{ key }} n'existe pas dans {{ source }}",
+                "invalidType": "Type invalide : type {{ type }} attendu pour le champ {{ key }} dans {{ source }} mais reçus {{ actual }}",
+                "invalidDateFormat": "Date invalide : format de date invalide pour le champ '{{ key }}' dans '{{ source }}'",
+                "notOneOf": "Valeur invalide : {{ value }} n'est pas une valeur comprise dans [{{ validSet }}] pour le champ '{{ key }}' dans '{{ source }}'",
+                "invalidRegex": "Valeur invalide : {{ value }} ne correspond pas au regex pour le champ '{{ key }}' dans '{{ source }}'",
+                "invalidLength": "Taille invalide: la taille de la valeur doit être {{ limits }} pour le champ '{{ key }}' dans '{{ source }}'",
+                "invalidLimit": "Taille invalide: la taille de la valeur doit être comprise dans [{{ limits }}] pour le champ '{{ key }}' dans '{{ source }}'"
+            },
+            "alreadyExists": "Le champ {{ field }} existe déjà",
+            "invalidOrExpired": "Le champ {{ field }} est invalide ou expiré",
+            "mismatchBetween": "Les champs {{ key1 }} et {{ key2 }} ne correspondent pas",
+            "notVerified": "Le champ {{ field }} n'est pas vérifié",
+            "invalidField": "Le champ {{ field }} est invalide",
+            "badRequest": "Bad request : {{ source }} {{ field }}",
+            "failed": "{{ field }} a échoué"
+        },
+        "401": {
+            "unauthorized": "Non autorisé : {{ state }} {{ field }}",
+            "notOwned": "Non autorisé : {{ field }} n'appartient pas à l'utilisateur"
+        },
+        "403": {
+            "forbidden": "Interdit : {{ field }}"
+        },
+        "404": {
+            "fieldNotFound": "{{ field }} non trouvé",
+            "pageNotFound": "Endpoint non trouvé ({{ url }})"
+        },
+        "500": {
+            "internalError": "Erreur interne du serveur:\\n{{ error }}"
+        }
+    }
+}

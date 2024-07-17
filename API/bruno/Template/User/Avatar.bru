@@ -1,0 +1,19 @@
+meta {
+  name: Avatar
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{url}}/v1/avatar/:username
+  body: none
+  auth: none
+}
+
+params:path {
+  username: Admin
+}
+
+headers {
+  Authorization: {{API_key}}
+}

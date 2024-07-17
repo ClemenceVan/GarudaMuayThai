@@ -1,0 +1,68 @@
+{
+    "locale": "en",
+    "fields": {
+        "wrongType": "Wrong type",
+        "invalid": "invalid",
+        "token": "Token",
+        "email": "Email",
+        "account": "Account",
+        "link": "Link",
+        "gcu": "GCU",
+        "passEmail": "email and password"
+    },
+    "success": {
+        "200": {
+            "success": "{{ field }} success",
+            "updated": "{{ field }} successfully updated",
+            "deleted": "{{ field }} successfully deleted",
+            "activated": "{{ field }} successfully activated",
+            "sentIfExist": "{{ field }} sent if exist"
+        },
+        "201": {
+            "created": "{{ field }} successfully created"
+        }
+    },
+    "error": {
+        "400": {
+            "parser": {
+                "unknownSource": "Unknown source : {{ source }}",
+                "missingField": "Missing required value : {{ key }} in {{ source }}",
+                "invalidField": "",
+                "invalidFieldInArray": "Invalid type : field {{key}} in {{source}} should only contain {{typeStr}}s",
+                "invalidValue": "Invalid value : {{ value }} for rule '{{ rule }}' in field '{{ key }}' in {{ source }}",
+                "unknownField": "Unknown field : {{ key }} doesn't exist in {{ source }}",
+                "invalidType": "Invalid type : expected a {{ typeStr }} for field '{{ key }}' in {{ source }} but got {{ wrongType }}",
+                "invalidDateFormat": "Invalid date : Couldn't parse the date for field '{{ key }}' in {{ source }}",
+                "notOneOf": "Invalid value : '{{ value }}' is not one of [{{ validSet }}] for field '{{ key }}' in {{ source }}",
+                "invalidRegex": "Invalid value : value doesn't match the regex for field '{{ key }}' in {{ source }}",
+                "invalidLength": "Invalid length : value's length has to be be {{ limits }} for field '{{ key }}' in {{ source }}",
+                "invalidLimit": "Invalid limit : value has to be between [{{ limits }}] for field '{{ key }}' in {{ source }}"
+            },
+            "bot" : {
+                "alreadySubscribed": "Invalid operation : user already subscribed to this bot",
+                "notSubscribed": "Invalid operation : user hasn't subscribed to this bot"
+            },
+            "alreadyExists": "{{ field }} already exists",
+            "invalidOrExpired": "{{ field }} invalid or expired",
+            "mismatchBetween": "Mismatch between {{ field }}",
+            "notVerified": "{{ field }} not verified",
+            "invalidField": "Invalid {{ field }}",
+            "badRequest": "Bad request : {{ source }} {{ field }}",
+            "failed": "{{ field }} failed"
+        },
+        "401": {
+            "unauthorized": "Unauthorized : {{ state }} {{ field }}",
+            "notOwned": "Unauthorized : {{ field }} not owned by the user"
+        },
+        "403": {
+            "forbidden": "Forbidden {{ field }}"
+        },
+        "404": {
+            "fieldNotFound": "{{ field }} not found",
+            "pageNotFound": "Endpoint not found: {{method}} {{ url }}"
+        },
+        "500": {
+            "internalError": "Internal Server Error:\\n{{ error }}"
+        }
+    }
+}

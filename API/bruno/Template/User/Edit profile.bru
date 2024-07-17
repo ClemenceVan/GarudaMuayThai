@@ -1,0 +1,22 @@
+meta {
+  name: Edit profile
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{url}}/v1/user/editprofile
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "username": "Admin"
+  }
+}
