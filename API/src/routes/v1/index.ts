@@ -14,14 +14,11 @@ import { login, register, getAvatar,  getPublicProfile, } from '../../constants/
 // Routes
 //  User
 
-index.post(login, authentication.login); // OK
+index.post(login, authentication.login);
 
-index.post(register, authentication.register); // OK
+index.post(register, authentication.register);
 
-index.get(getAvatar, UserController.getAvatar); // OK
-
-index.get(getPublicProfile, authentication.profile); // OK
-
+index.get(getAvatar, UserController.getAvatar);
 
 /* to be moved */
 import Employees from '../../controllers/employees';

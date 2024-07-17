@@ -48,7 +48,7 @@
             "notVerified": "{{ field }} not verified",
             "invalidField": "Invalid {{ field }}",
             "badRequest": "Bad request : {{ source }} {{ field }}",
-            "failed": "{{ field }} failed"
+            "failed": "{{ field }} failed: {{ reason }}"
         },
         "401": {
             "unauthorized": "Unauthorized : {{ state }} {{ field }}",

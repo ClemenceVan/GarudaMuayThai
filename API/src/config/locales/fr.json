@@ -44,7 +44,7 @@
             "notVerified": "Le champ {{ field }} n'est pas vérifié",
             "invalidField": "Le champ {{ field }} est invalide",
             "badRequest": "Bad request : {{ source }} {{ field }}",
-            "failed": "{{ field }} a échoué"
+            "failed": "{{ field }} a échoué : {{ reason }}"
         },
         "401": {
             "unauthorized": "Non autorisé : {{ state }} {{ field }}",

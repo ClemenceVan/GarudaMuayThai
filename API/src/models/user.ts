@@ -10,7 +10,8 @@ import {save} from '../constants/server';
 
 // Model
 export interface IUser extends Document {
-    username: string,
+    name: string,
+    surname: string,
     password: string,
     email: string,
     avatar: string,
@@ -22,7 +23,8 @@ export interface IUser extends Document {
 
 const UserSchema: Schema = new Schema({
     _id: { type: String, required: true, default: () => nanoid() },
-    username: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
+    surname: { type: String, required: true },
     password: { type: String, required: true },
     email:{ type: String, required: true },
     avatar: { type: String },

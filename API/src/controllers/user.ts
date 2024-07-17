@@ -27,16 +27,6 @@ const upload = multer({
     },
 });
 
-const bannerStorage = multer.memoryStorage();
-const uploadBanner = multer({
-    storage: bannerStorage,
-    limits: {
-        fileSize: 1024 * 1024 * 5, // 5MB
-        files: 1, // 1 file
-    },
-});
-
-
 import { Readable } from 'stream';
 
 // Define the router decorator factory
@@ -66,7 +56,7 @@ export class authentication {
     @router("POST", "/login")
     static login = TryCatch(async (req: Request, res: Response) => {
         const parser = Parser.body({
-            username: {
+            email: {
                 required: true,
                 type: 'string'
             },
@@ -75,64 +65,56 @@ export class authentication {
                 type: 'string'
             },
         }, req);
-        const { username, password } = parser.parsed().body;
-        const user = await User.findOne({ username });
-        if (!user) return res.ret(400, "error.400.failed", { field: login });
-        if (!await user.isValidPassword(password)) return res.ret(400, "error.400.failed", { field: login });
+        const { email, password } = parser.parsed().body;
+        const user = await User.findOne({ email });
+        if (!user) return res.ret(400, error[400].failed, { field: login, reason: "Aucun utilisateur trouvé avec cet email" });
+        if (!await user.isValidPassword(password)) return res.ret(400, error[400].failed, { field: login });
 
-        return res.ret(200, {'token': user.signJWT()});
+        return res.ret(200, {
+            id: user.id,
+            'token': user.signJWT()
+        });
     })
     @description("Register", "Register a user")
     @router("POST", "/register")
     static register = TryCatch(async (req: Request, res: Response) => {
         const parser = Parser.body({
-            username: {
-                type: 'string',
-                required: true
+            name: {
+                required: true,
+                type: 'string'
             },
-            password: {
-                type: 'string',
-                required: true
+            surname: {
+                required: true,
+                type: 'string'
             },
             email: {
-                type: 'string',
-                required: true
+                required: true,
+                type: 'string'
+            },
+            password: {
+                required: true,
+                type: 'string'
             },
         }, req);
-        const { username, password, email } = parser.parsed().body;
+        const { name, surname, email, password } = parser.parsed().body;
 
-        if (await User.findOne({ username }))
-            return res.ret(400, "error.400.failed", { field: register });
+        if (await User.findOne({ email }))
+            return res.ret(400, error[400].failed, { field: register, reason: "L'adresse email est déjà utilisée, connectez-vous ou contactez le support" });
+        if (await User.findOne({ name, surname }))
+            return res.ret(400, error[400].failed, { field: register, reason: "Un compte avec ce nom et prénom a déjà été créé, connectez-vous ou contactez le support" });
 
         const user = await new User({
-            username,
+            name,
+            surname,
             password,
             email
         }).save();
 
         res.status(200).send({
             message: req.t(success[200].success, { field: register }),
+            id: user.id,
             token: user.signJWT()
         });
-    })
-    @description("Public Profile", "Get the public profile of a user")
-    @router("GET", "/user/profile/:username")
-    static profile = TryCatch(async (req: Request, res: Response) => {
-        const parser = Parser.params({
-            username: {
-                type: 'string',
-                required: true
-            }
-        }, req);
-        const { username } = parser.parsed().params;
-        const usr = await User.findOne({ username });
-        if (!usr) return res.ret(404, error[404].fieldNotFound, { field: user });
-        const avatarLink = usr.avatar ? '/v1/avatar/' + usr.id : '/v1/avatar/default';
-        let data = {
-            username: usr.username,
-            avatar: avatarLink
-        }
-        return res.ret(200, data);
     })
 }
 
@@ -144,21 +126,34 @@ export class UserController {
         const usr = await User.findById(req.session.id);
         if (!usr) return res.ret(404, error[404].fieldNotFound, { field: user });
         return res.ret(200, {
-            username: usr.username,
+            id: usr.id,
+            name: usr.name,
+            surname: usr.surname,
+            email: usr.email,
             avatar: usr.avatar ? '/v1/avatar/' + usr.id : '/v1/avatar/default'
         });
     })
     static editProfile = TryCatch(async (req: Request, res: Response) => {
         const parser = Parser.body({
-            username: {
+            name: {
+                type: 'string',
+                required: false
+            },
+            surname: {
+                type: 'string',
+                required: false
+            },
+            email: {
                 type: 'string',
                 required: false
             }
         }, req);
-        const { username } = parser.parsed().body;
-        const usr = await User.findById(req.session.id);
+        const { name, surname, email } = parser.parsed().body;
+        let usr = await User.findById(req.session.id);
         if (!usr) return res.ret(404, error[404].fieldNotFound, { field: user });
-        usr.username = username || usr.username;
+        usr.name = name || usr.name;
+        usr.surname = surname || usr.surname;
+        usr.email = email || usr.email;
         await usr.save();
         res.ret(200, success[200].updated, { field: user });
     })
@@ -176,7 +171,7 @@ export class UserController {
         const { password, newpassword } = parser.parsed().body;
         const usr = await User.findById(req.session.id);
         if (!usr) return res.ret(404, error[404].fieldNotFound, { field: user });
-        if (!await bcrypt.compare(password, usr.password)) return res.ret(400, "error.400.failed", { field: password_change });
+        if (!await bcrypt.compare(password, usr.password)) return res.ret(400, error[400].failed, { field: password_change });
         usr.password = newpassword;
         await usr.save();
         res.ret(200, success[200].success, { field: password_change });
@@ -190,17 +185,17 @@ export class UserController {
         if (usr.avatar) {
             await bucket.delete(new ObjectId(usr.avatar)).catch((e) => {
                 console.error(e);
-                return res.ret(400, "error.400.failed", { field: uploadAvatar });
+                return res.ret(400, error[400].failed, { field: uploadAvatar });
             });
             await User.findByIdAndUpdate(req.session.id, { avatar: undefined });
         }
         upload.single('avatar')(req, res, async (err: any) => {
             if (err) {
                 console.log('upload error', err);
-                return res.ret(400, "error.400.failed", { field: uploadAvatar });
+                return res.ret(400, error[400].failed, { field: uploadAvatar });
             } else if (!req.file) {
                 console.log('file error', req);
-                return res.ret(400, "error.400.failed", { field: uploadAvatar });
+                return res.ret(400, error[400].failed, { field: uploadAvatar });
             }
             const readablePhotoStream = new Readable();
             readablePhotoStream.push(req.file.buffer);
@@ -212,7 +207,7 @@ export class UserController {
 
             uploadStream.on('error', (e) => {
                 console.log('uploadStream error', e);
-                return res.ret(400, "error.400.failed", { field: uploadAvatar });
+                return res.ret(400, error[400].failed, { field: uploadAvatar });
             });
 
             uploadStream.on('finish', async () => {
