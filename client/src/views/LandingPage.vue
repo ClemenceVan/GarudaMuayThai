@@ -89,7 +89,7 @@
     <Header :isLanding="true" />
     <div class="container max-w-screen-sm md:w-screen md:flex md:justify-center md:bg-[#f0f0f0] md:max-w-full">
       <div class="bg-[#f0f0f0] flex-col flex items-center">
-        <div class="container p-[2rem] md:p-[4rem] pb-0 text-xl w-full">
+        <div class="container p-[2rem] md:py-[4rem] md:px-[8rem] pb-0 text-xl w-full">
           <div class="flex justify-center ">
             <div class="place-content-between">
               <div class="pb-16">
@@ -116,25 +116,25 @@
           </div>
           <div>
             <div class="flex justify-between md:justify-evenly pt-10 px-2">
-              <button class="px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+              <button class="px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
                 <a href="#inscription" v-smooth-scroll>Inscription</a>
               </button>
-              <button v-if="!isMobile" class="px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+              <button v-if="!isMobile" class="px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
                 <a href="#infos" v-smooth-scroll>Infos Utiles</a>
               </button>
-              <button class="px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+              <button class="px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
                 <a href="/shop">Boutique</a>
               </button>
             </div>
             <div v-if="isMobile" class="mx-2">
-              <button class="w-full mt-5 px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+              <button class="w-full mt-5 px-4 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
                 <a href="#infos" v-smooth-scroll>Infos Utiles</a>
               </button>
             </div>
           </div>
           <br /><br />
         </div>
-        <div class="p-[2rem] md:p-[4rem] text-xl w-full">
+        <div class="p-[2rem] md:py-[4rem] md:px-[8rem] text-xl w-full">
           <a id="inscription"></a>
           <div class="flex w-full justify-center pb-10">
             <div class="w-1/2 h-1 bg-red-600 my-3 flex px-100 justify-self-center"></div>
@@ -149,7 +149,7 @@
                 Nous nous occupons du reste.
               </p>
             </div>
-            <div class="w-full md:w-1/3 pt-9 text-right md:text-left md:pt-0">
+            <div class="w-full md:w-1/4 pt-9 text-right md:text-left md:pt-0">
               <h1 class="text-2xl font-bold">Frais d'Inscription</h1>
               <div class="w-1/3 h-1 bg-red-600 my-3 md:mr-10 max-md:float-right"></div>
               <p class="w-full text-right mt-7 md:mt-0 md:w-4/5 md:text-left pl-10">Adultes : 150€<br />Mineurs : 100€<br />Etudiants : 140€<br /> [Prix a ajuster]</p>
@@ -158,32 +158,33 @@
           <div class="pt-14 w-full">
             <p class="text-justify md:text-left">
               Pour vous inscrire, vous devez signer le réglement intérieur du centre social et culturel Roger Salengro lorsque vous visitez le club pour la première fois.<br />
-              Un certificat médical est également requis pour les nouveaux membres. [COMPLETER INSTRUCTIONS ICI]<br />
+              <br />
+              Un certificat médical autorisant la pratique de la boxe thaïlandaise ainsi que deux photos d'identité sont également demandés.<br />
+              Le paiement de la cotisation annuelle sera demandé après la période d'essai pour valider votre inscription.<br />
             </p>
           </div>
         </div>
-        <div class="container p-[2rem] md:p-[4rem] text-xl w-full">
+        <div class="container p-[2rem] md:px-[8rem] text-xl w-full">
           <div class="flex justify-between md:justify-evenly pt-10 px-2">
-            <button class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+            <button class="max-md:w-full px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all transition-all">
               <a href="#" v-smooth-scroll>Formulaire d'inscription</a>
             </button>
-            <button v-if="!isMobile" class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+            <button v-if="!isMobile" class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
               <a href="#" v-smooth-scroll>Télécharger le réglement intérieur</a>
             </button>
-            <button class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+            <!-- <button class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
               <a href="#">Payer sa licence</a>
-            </button>
+            </button> -->
           </div>
           <div v-if="isMobile" class="flex justify-center pt-5">
-            <button class="mx-2 w-full px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5">
+            <button class="mx-2 w-full px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
               <a href="#" v-smooth-scroll>Télécharger le réglement intérieur</a>
             </button>
           </div>
         </div>
         <a id="infos"></a>
-        <br /><br /><br /><br />
-        <div class="px-[2rem] md:px-[4rem] text-xl w-full pb-12">
-          <div class="flex w-full justify-center pb-8">
+        <div class="px-[2rem] md:py-[4rem] md:px-[8rem] text-xl w-full pb-12">
+          <div class="flex w-full justify-center pb-16">
             <div class="w-1/2 h-1 bg-red-600 my-3 flex px-100 justify-self-center"></div>
           </div>
           <div class="md:flex justify-around">
