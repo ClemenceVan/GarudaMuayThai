@@ -1,0 +1,31 @@
+meta {
+  name: Edit article
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{url}}/v1/article/:id
+  body: json
+  auth: none
+}
+
+params:path {
+  id: kcRbWvuznpIYMMAgjzxlq
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "title": "Test publication avec image",
+    "content": "Test pour le module d'image<br/><br/>Un peu de texte pour remplir<br/><br/>Voici notre logo"
+  }
+}
+
+body:multipart-form {
+  image: @file(C:\Users\cleme\Downloads\e8404fe052a03decfb6f942752e45448cac9956a_Dragon_Bleu___Short_Muay_Thai_Phantom_Athletics_Sak_Yant_01_442x.webp)
+}

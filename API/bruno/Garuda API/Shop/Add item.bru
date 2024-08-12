@@ -1,0 +1,24 @@
+meta {
+  name: Add item
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/v1/shop/add
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "name": "Protège Coude",
+    "price": 10,
+    "description": "Protections pour les entrainements au coude"
+  }
+}

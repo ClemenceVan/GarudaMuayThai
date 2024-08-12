@@ -1,16 +1,16 @@
 meta {
-  name: Private profile
+  name: Get public articles
   type: http
-  seq: 3
+  seq: 2
 }
 
 get {
-  url: {{url}}/v1/user/profile
+  url: {{url}}/v1/articles
   body: none
   auth: none
 }
 
 headers {
   Authorization: {{API_key}}
-  access-token: {{User_token}}
+  ~access-token: {{User_token}}
 }

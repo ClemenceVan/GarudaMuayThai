@@ -16,7 +16,8 @@
             "updated": "{{ field }} mis à jour avec succès",
             "deleted": "{{ field }} supprimé avec succès",
             "activated": "{{ field }} activé avec succès",
-            "sentIfExist": "{{ field }} envoyé si existant"
+            "sentIfExist": "{{ field }} envoyé si existant",
+            "created": "{{ field }} créé avec succès"
         },
         "201" : {
             "created": "{{ field }} créé avec succès"

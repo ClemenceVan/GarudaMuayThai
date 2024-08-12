@@ -1,0 +1,32 @@
+meta {
+  name: Publish article
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{url}}/v1/article/publish/:id
+  body: multipartForm
+  auth: none
+}
+
+params:path {
+  id: kcRbWvuznpIYMMAgjzxlq
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "name": "Short",
+    "price": 20,
+    "description": "Short floqué du club"
+  }
+}
+
+body:multipart-form {
+  image: @file(C:\Users\cleme\Downloads\e8404fe052a03decfb6f942752e45448cac9956a_Dragon_Bleu___Short_Muay_Thai_Phantom_Athletics_Sak_Yant_01_442x.webp)
+}

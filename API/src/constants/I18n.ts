@@ -2,6 +2,7 @@
 export const success = {
     200: {
         success: "success.200.success",
+        created: "success.200.created",
         updated: "success.200.updated",
         deleted: "success.200.deleted",
         activated: "success.200.activated",

@@ -1,0 +1,23 @@
+meta {
+  name: Create article
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/v1/article
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "title": "Nouveau site Garuda Muay Thaï !",
+    "content": "Bienvenue sur le nouveau site de Garuda Muay Thaï !<br/><br/>Vous y trouverez toutes les informations nécessaires pour vous inscrire et pratiquer la boxe thaïlandaise dans notre club.<br/><br/>N'hésitez pas à nous contacter pour plus d'informations."
+  }
+}

@@ -1,19 +1,20 @@
 meta {
-  name: Avatar
+  name: Get article
   type: http
-  seq: 4
+  seq: 3
 }
 
 get {
-  url: {{url}}/v1/avatar/:username
+  url: {{url}}/v1/article/:uuid
   body: none
   auth: none
 }
 
 params:path {
-  username: {{User_id}}
+  uuid: 
 }
 
 headers {
   Authorization: {{API_key}}
+  ~access-token: {{User_token}}
 }

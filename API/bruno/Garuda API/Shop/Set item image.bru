@@ -1,0 +1,32 @@
+meta {
+  name: Set item image
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{url}}/v1/shop/image/:id
+  body: multipartForm
+  auth: none
+}
+
+params:path {
+  id: sE5ForguDCrzUEvbd2xh4
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "name": "Short",
+    "price": 20,
+    "description": "Short floqué du club"
+  }
+}
+
+body:multipart-form {
+  image: @file(C:\Users\cleme\Downloads\Phantom-Athl_IMPACT_Elbow-Guards_Black_1_1200x.webp)
+}

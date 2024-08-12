@@ -1,0 +1,32 @@
+meta {
+  name: Set article image
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{url}}/v1/article/image/:id
+  body: multipartForm
+  auth: none
+}
+
+params:path {
+  id: kcRbWvuznpIYMMAgjzxlq
+}
+
+headers {
+  Authorization: {{API_key}}
+  access-token: {{User_token}}
+}
+
+body:json {
+  {
+    "name": "Short",
+    "price": 20,
+    "description": "Short floqué du club"
+  }
+}
+
+body:multipart-form {
+  image: @file(C:\Users\cleme\Documents\GitHub\Perso\Garuda-Web\client\src\assets\logo.png)
+}
