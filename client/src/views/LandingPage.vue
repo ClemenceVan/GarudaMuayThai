@@ -182,24 +182,24 @@
         </div>
         <a id="infos"></a>
         <br /><br /><br /><br />
-        <div class="px-[2rem] md:px-[4rem] text-xl w-full">
+        <div class="px-[2rem] md:px-[4rem] text-xl w-full pb-12">
           <div class="flex w-full justify-center pb-8">
             <div class="w-1/2 h-1 bg-red-600 my-3 flex px-100 justify-self-center"></div>
           </div>
           <div class="md:flex justify-around">
             <div class="w-full md:w-2/3">
               <div class="flex justify-around">
-                <div class="w-full md:w-1/2">
+                <div class="w-full">
                   <h1 class="text-2xl md:text-3xl font-bold">Horraires</h1>
                   <div class="w-1/4 h-1 bg-red-600 my-3 mr-10"></div>
-                  <p class="w-4/5 text-left pl-10">
+                  <p class=" text-left pl-10">
                     Lundi : 19h30 - 21h30<br />Jeudi : 19h30 - 21h30<br />
                   </p>
                 </div>
-                <div v-if="!isMobile" class="w-1/2">
+                <!-- <div v-if="!isMobile" class="w-1/2">
                   <h1 class="text-3xl font-bold pb-10">Frais d'Inscription</h1>
                   <p class="w-4/5 text-left pl-10">Adultes : 150€<br />Mineurs : 100€<br />Etudiants : 140€<br /></p>
-                </div>
+                </div> -->
               </div>
               <div class="md:flex justify-around pt-16">
                 <div class="w-full md:text-left text-right">
@@ -220,12 +220,12 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-1/3">
-              <h1 class="text-3xl font-bold">Localisation</h1>
+            <div class="w-full md:w-1/2">
+              <h1 class="text-3xl font-bold">Nous trouver</h1>
               <div class="w-1/4 h-1 bg-red-600 my-3 mr-10"></div>
               <p class="w-full text-left pl-10 pb-10 md:pb-0">Centre Socio-Culturel Roger Salengro<br />4 rue Massenet, Lille fives 59000</p>
               <iframe
-                class="w-full pb-5"
+                class="w-full p-5"
                 width="400"
                 height="400"
                 style="border: 0"
