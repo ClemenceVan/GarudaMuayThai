@@ -1,36 +1,37 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import VueSmoothScroll from 'vue3-smooth-scroll'
-import axios from 'axios'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import VueSmoothScroll from 'vue3-smooth-scroll';
+import axios from 'axios';
 
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 import PrimeVue from 'primevue/config';
 
-import './assets/main.css'
+import './assets/main.css';
 
-import Lara from '@/presets/lara';      //import preset  
+import Lara from '@/presets/lara';
 
-const app = createApp(App)
+const app = createApp(App);
 
-// app.config.globalProperties.$hostname = 'http://localhost:3001/v1'
-// app.config.globalProperties.$hostname = 'http://192.168.0.19:3001/v1'
-app.config.globalProperties.$hostname = 'https://garudamuaythai-production.up.railway.app/v1'
-app.config.globalProperties.$apiKey = '0799f5c9-6478-4f7a-b6b5-9bb59a8f05a7'
+app.config.globalProperties.$hostname = import.meta.env.VITE_API_URL;
 
-axios.defaults.headers.common['Authorization'] = app.config.globalProperties.$apiKey
+// Access the environment variable with Vite
+console.log(import.meta.env.VITE_API_KEY);
+app.config.globalProperties.$apiKey = import.meta.env.VITE_API_KEY;
 
-app.use(VueSmoothScroll)
+axios.defaults.headers.common['Authorization'] = app.config.globalProperties.$apiKey;
+
+app.use(VueSmoothScroll);
 
 app.use(PrimeVue, {
     unstyled: true,
-    pt: Lara                            //apply preset        
+    pt: Lara
 });
 
-app.component('Header', Header)
-app.component('Footer', Footer)
+app.component('Header', Header);
+app.component('Footer', Footer);
 
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');
