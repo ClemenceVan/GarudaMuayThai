@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc --target ES5 --experimentalDecorators",
     "start": "node dist/server.js",
-    "prod": "cross-env NODE_ENV=prod node ./dist/server.js\"",
+    "prod": "cross-env NODE_ENV=prod node ./dist/server.js",
     "dev": "cross-env NODE_ENV=dev concurrently -k \"tsc -p . -w --target ES5 --experimentalDecorators\" \"nodemon ./dist/server.js\"",
     "doc": "apidoc -i ./src -o ./doc -t ./doc/template",
     "test": "cross-env NODE_ENV=test jest --forceExit --verbose false"
