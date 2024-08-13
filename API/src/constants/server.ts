@@ -3,7 +3,7 @@ export const prefix = "[Server]: ";
 export const setup = prefix + "Setting up ...";
 export const envError = prefix + "FATAL : Unable to find .env file.";
 export const setupError = prefix + "Error while starting server.";
-export const started = prefix + "Running on http://localhost:"
+export const started = prefix + "Running on http://"
 
 export const dbConnected = prefix + "Connected to database ";
 export const dbError = prefix + "Unable to connect to database.";

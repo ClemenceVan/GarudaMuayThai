@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoSanitize from 'express-mongo-sanitize';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import os from 'os';
 
 /* Constants */
 import {setup, envError, started, setupError,
@@ -41,7 +42,7 @@ const setupServer = function (server: Express) {
 
         // Connect to database
         db();
-        server.listen(process.env.NODE_ENV == 'test' ? 0 : process.env.PORT, () => console.log(started + process.env.PORT));
+        server.listen(process.env.NODE_ENV == 'test' ? 0 : process.env.PORT, () => console.log(started + os.hostname() + ":" + process.env.PORT));
     } catch (e) {
         console.log(setupError);
         console.log(e);
