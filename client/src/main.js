@@ -16,7 +16,7 @@ const app = createApp(App)
 
 // app.config.globalProperties.$hostname = 'http://localhost:3001/v1'
 // app.config.globalProperties.$hostname = 'http://192.168.0.19:3001/v1'
-app.config.globalProperties.$hostname = 'http://164.90.221.35:3001/v1'
+app.config.globalProperties.$hostname = 'https://garudamuaythai-production.up.railway.app/v1'
 app.config.globalProperties.$apiKey = '0799f5c9-6478-4f7a-b6b5-9bb59a8f05a7'
 
 axios.defaults.headers.common['Authorization'] = app.config.globalProperties.$apiKey
