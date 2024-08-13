@@ -1,3 +1,15 @@
+node_modules
+dist
+.env
+.vscode
+*package-lock.json
+*dist/
+apidoc/
+*doc*/
+!doc/template/
+bruno/
+```
+
 # Logs
 logs
 *.log

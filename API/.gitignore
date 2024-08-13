@@ -1,9 +1,0 @@
-node_modules
-.env
-dist
-.vscode
-dist/
-apidoc/
-*doc*/
-!doc/template/
-```

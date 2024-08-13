@@ -23,6 +23,7 @@ body:json {
 
 script:post-response {
   let data = res.getBody().data
+  if (!data) return;
   if (data.token)
     bru.setEnvVar("User_token", data.token);
   if (data.id)
