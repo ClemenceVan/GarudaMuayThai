@@ -17,7 +17,6 @@ const app = createApp(App);
 app.config.globalProperties.$hostname = import.meta.env.VITE_API_URL;
 
 // Access the environment variable with Vite
-console.log(import.meta.env.VITE_API_KEY);
 app.config.globalProperties.$apiKey = import.meta.env.VITE_API_KEY;
 
 axios.defaults.headers.common['Authorization'] = app.config.globalProperties.$apiKey;

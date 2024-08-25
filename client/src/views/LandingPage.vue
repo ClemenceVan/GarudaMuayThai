@@ -152,7 +152,7 @@
             <div class="w-full md:w-1/4 pt-9 text-right md:text-left md:pt-0">
               <h1 class="text-2xl font-bold">Frais d'Inscription</h1>
               <div class="w-1/3 h-1 bg-red-600 my-3 md:mr-10 max-md:float-right"></div>
-              <p class="w-full text-right mt-7 md:mt-0 md:w-4/5 md:text-left pl-10">Adultes : 150€<br />Mineurs : 100€<br />Etudiants : 140€<br /> [Prix a ajuster]</p>
+              <p class="w-full text-right mt-7 md:mt-0 md:w-4/5 md:text-left pl-10">Adultes : 180€<br />Etudiants : 160€<br />Compétiteurs +25€</p>
             </div>
           </div>
           <div class="pt-14 w-full">
@@ -166,15 +166,21 @@
         </div>
         <div class="container p-[2rem] md:px-[8rem] text-xl w-full">
           <div class="flex justify-between md:justify-evenly pt-10 px-2">
-            <button class="max-md:w-full px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all transition-all">
-              <a href="#" v-smooth-scroll>Formulaire d'inscription</a>
-            </button>
-            <button v-if="!isMobile" class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
-              <a href="#" v-smooth-scroll>Télécharger le réglement intérieur</a>
-            </button>
-            <!-- <button class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
-              <a href="#">Payer sa licence</a>
-            </button> -->
+            <a href="/Fiche_Inscription_2425.pdf" target="_blank" rel="noopener noreferrer" class="max-md:w-full">
+              <button class="max-md:w-full px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
+                Formulaire d'inscription
+              </button>
+            </a>
+            <a v-if="!isMobile" href="/Reglement_Interieur_2025.pdf" target="_blank" rel="noopener noreferrer">
+              <button class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
+                Télécharger le réglement intérieur
+              </button>
+            </a>
+            <!-- <a href="#">
+              <button class="px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
+                Payer sa licence
+              </button>
+            </a> -->
           </div>
           <div v-if="isMobile" class="flex justify-center pt-5">
             <button class="mx-2 w-full px-1 py-2 border border-[#0D0D0D] rounded-lg shadow-md text-black hover:bg-red-600 hover:text-white md:px-5 transition-all">
@@ -288,7 +294,6 @@ export default {
     },
     handleScroll() {
       if (document.getElementById('mobileNav'))
-        console.log(document.getElementById('mobileNav').getBoundingClientRect())
       if (window.scrollY <= 100 || (this.isMobile && window.scrollY <= 1000)) {
         if (lastpos < window.scrollY) {
           this.arrowScroll();
@@ -297,7 +302,6 @@ export default {
       lastpos = window.scrollY;
     },
     disableScroll() {
-      console.log('Disabling scroll');
       document.body.style.overflow = 'hidden'
       window.removeEventListener('scroll', this.handleScroll);
       setTimeout(() => {

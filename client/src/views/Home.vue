@@ -54,7 +54,6 @@ export default {
     axios.get(this.$hostname + '/articles')
       .then((response) => {
         this.articles = response.data.data;
-        console.log('Articles:', this.articles);
         this.articles.forEach((item, index) => {
           axios.get(this.$hostname + '/article/image/' + item.id, { responseType: 'blob' })
             .then((response) => {
