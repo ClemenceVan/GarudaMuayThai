@@ -293,7 +293,6 @@ export default {
       this.disableScroll();
     },
     handleScroll() {
-      if (document.getElementById('mobileNav'))
       if (window.scrollY <= 100 || (this.isMobile && window.scrollY <= 1000)) {
         if (lastpos < window.scrollY) {
           this.arrowScroll();
